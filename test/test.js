@@ -226,3 +226,47 @@ describe('range', async assert => {
   })
 })
 
+describe('extend', async assert => {
+
+  assert({
+    given: 'destination, sources',
+    should: 'return destination object extended by sources',
+    actual: exercises.extend({name: 'moe'}, {age: 50}, {job: 'bar'}),
+    expected: {name: 'moe', age: 50, job: 'bar'}
+  })
+
+  assert({
+    given: 'an empty object',
+    should: 'return an empty object',
+    actual: exercises.extend({}),
+    expected: {}
+  })
+})
+
+describe('times', async assert => {
+
+  assert({
+    given: 'n, iteratee',
+    should: 'return an array with with n returns of the iteratee',
+    actual: exercises.times(3, x => 'hey'),
+    expected: ['hey', 'hey', 'hey']
+  })
+})
+
+describe('constant', async assert => {
+
+  assert({
+    given: 'value',
+    should: 'return that same value',
+    actual: exercises.constant({name: 'moe'})(),
+    expected: {name: 'moe'}
+  })
+})
+
+// describe('delay', async assert => {
+
+//   assert({
+//     given: 'func, wait, ...args',
+//     should: ''
+//   })
+// })

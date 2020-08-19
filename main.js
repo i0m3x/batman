@@ -14,7 +14,7 @@ _.each = (array, iteratee) => { //_.each(list, iteratee, [context])
     iteratee(var1, i, array) //f(x) taking three args
   }
   // show each index in the array
-  console.log(i) //only defined within lexical scope, so it doesn't show up outside of the function
+  //only defined within lexical scope, so it doesn't show up outside of the function
 }
 
 _.map = (array, iteratee) => {
@@ -41,7 +41,7 @@ _.filter = (array, predicate) => {
   //look through each value in the list
   for(let i = 0; i <array.length; i++){
     let value = array[i]
-    if(predicate(value, i, array === true)) {
+    if(predicate(value, i, array) === true) {
       arrayj.push(value)
     }
   }
@@ -105,4 +105,23 @@ _.range = (start, stop, step=1) => {
 //   }
 //   return array
 // }
+_.extend = (...args) => {
+  result = {}
+  let argsList = [...args]
+  for(let i = 0; i<argsList.length; i++){
+    entry = argsList[i]
+    for (const property in entry){
+      result[property] = entry[property]
+    }
+  }
+  return result
+}
+
+//take objects combine into one
+
+//edge case -if empty obj, return empty obj
+
+
+
+
 export default _
